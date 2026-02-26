@@ -1,0 +1,13 @@
+# Disable directory listing
+Options -Indexes
+
+# Follow symbolic links in this directory
+Options +FollowSymLinks
+
+# Rewrite engine setup
+RewriteEngine On
+
+# Handle CodeIgniter URL rewriting
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]

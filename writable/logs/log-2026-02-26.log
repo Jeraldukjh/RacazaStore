@@ -1,0 +1,1361 @@
+ERROR - 2026-02-26 01:08:55 --> Unknown column 'expiry_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `products` (`created_at`, `expiry_date`, `price`, `product_name`, `quantity`, `updated_at`)
+VALUES (\'2026-02-26 01:08:55\',\'2027-02-26\',999.99,\'Laptop\',10,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-08-25\',25.5,\'Mouse\',50,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-02-19\',75,\'Keyboard\',30,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',NULL,299.99,\'Monitor\',15,\'2026-02-26 01:08:55\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `products` (`created_at`, `expiry_date`, `price`, `product_name`, `quantity`, `updated_at`)
+VALUES (\'2026-02-26 01:08:55\',\'2027-02-26\',999.99,\'Laptop\',10,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-08-25\',25.5,\'Mouse\',50,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-02-19\',75,\'Keyboard\',30,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',NULL,299.99,\'Monitor\',15,\'2026-02-26 01:08:55\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `products` (`created_at`, `expiry_date`, `price`, `product_name`, `quantity`, `updated_at`)
+VALUES (\'2026-02-26 01:08:55\',\'2027-02-26\',999.99,\'Laptop\',10,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-08-25\',25.5,\'Mouse\',50,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-02-19\',75,\'Keyboard\',30,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',NULL,299.99,\'Monitor\',15,\'2026-02-26 01:08:55\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `products` (`created_at`, `expiry_date`, `price`, `product_name`, `quantity`, `updated_at`)
+VALUES (\'2026-02-26 01:08:55\',\'2027-02-26\',999.99,\'Laptop\',10,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-08-25\',25.5,\'Mouse\',50,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',\'2026-02-19\',75,\'Keyboard\',30,\'2026-02-26 01:08:55\'), (\'2026-02-26 01:08:55\',NULL,299.99,\'Monitor\',15,\'2026-02-26 01:08:55\')', null, false)
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 6 APPPATH\Database\Seeds\ProductSeeder.php(46): CodeIgniter\Database\BaseBuilder->insertBatch([...])
+ 7 SYSTEMPATH\Database\Seeder.php(155): App\Database\Seeds\ProductSeeder->run()
+ 8 SYSTEMPATH\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Seeds\\ProductSeeder')
+ 9 SYSTEMPATH\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run([])
+10 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+11 SYSTEMPATH\Boot.php(442): CodeIgniter\CLI\Console->run()
+12 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+13 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:13 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:13 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:17 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:17 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:28 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:28 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:30 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:30 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:34 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:34 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(89): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:49 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:49 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:50 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:50 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(98): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:56 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:56 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:57 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:57 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:57 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:57 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-02-26 01:25:58 --> Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+[Method: GET, Route: pos/sales]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:58 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:25:58 --> [Caused by] mysqli_sql_exception: Table 'racazastore.sales' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = \'2026-02-26\'
+ORDER BY `sold_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sales`.*, `products`.`product_name`
+FROM `sales`
+JOIN `products` ON `products`.`id` = `sales`.`product_id`
+WHERE DATE(sold_at) = :DATE(sold_at):
+ORDER BY `sold_at` DESC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\SaleModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\Pos.php(100): App\Models\SaleModel->getTodaySales()
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->sales()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:26:16 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:26:22 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:26:56 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:26:57 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:27:34 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:27:34 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:29:29 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(103): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:30:43 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:30:59 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:31:42 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(89): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-26 01:34:47 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: pos/processSale]
+in SYSTEMPATH\BaseModel.php on line 1855.
+ 1 SYSTEMPATH\BaseModel.php(1855): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(1042): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\Pos.php(81): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pos->processSale()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

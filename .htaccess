@@ -1,0 +1,31 @@
+# Disable directory listing
+Options -Indexes
+
+# Follow symbolic links in this directory
+Options +FollowSymLinks
+
+# Rewrite engine setup
+RewriteEngine On
+
+# Rewrite base
+RewriteBase /
+
+# If requesting the project root, send to the public folder
+RewriteRule ^$ public/ [L,R=302]
+
+# Serve files/directories that exist under /public
+RewriteCond %{REQUEST_URI} !^/public/ [NC]
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Forward everything else to CodeIgniter front controller in /public
+RewriteCond %{REQUEST_URI} !^/public/ [NC]
+RewriteRule ^(.*)$ public/index.php/$1 [L]
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
