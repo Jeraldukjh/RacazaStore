@@ -10,6 +10,10 @@ RewriteEngine On
 # Rewrite base
 RewriteBase /
 
+# Hide /public in URL: redirect /public/... to /...
+RewriteCond %{THE_REQUEST} \s/public/([^\s?]*) [NC]
+RewriteRule ^public/(.*)$ /$1 [R=301,L]
+
 # If requesting the project root, send to the public folder
 RewriteRule ^$ public/ [L,R=302]
 
