@@ -16,7 +16,10 @@ class ProductModel extends Model
     
     public function getProducts()
     {
-        return $this->findAll();
+        return $this->orderBy('product_name', 'ASC')
+            ->orderBy('expiry_date', 'ASC')
+            ->orderBy('id', 'ASC')
+            ->findAll();
     }
     
     public function getProduct($id)

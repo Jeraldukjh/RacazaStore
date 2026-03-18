@@ -35,6 +35,27 @@ class SaleModel extends Model
                     ->orderBy('sold_at', 'DESC')
                     ->findAll();
     }
+
+    public function getSalesByDate(string $date)
+    {
+        return $this->select('sales.*, products.product_name')
+            ->join('products', 'products.id = sales.product_id')
+            ->where('DATE(sold_at)', $date)
+            ->orderBy('sold_at', 'DESC')
+            ->findAll();
+    }
+
+    public function getSalesSummaryByDate(string $date): array
+    {
+        $row = $this->select('COUNT(*) as total_sales, COALESCE(SUM(total_price), 0) as total_revenue')
+            ->where('DATE(sold_at)', $date)
+            ->first();
+
+        return [
+            'total_sales' => (int) ($row['total_sales'] ?? 0),
+            'total_revenue' => (float) ($row['total_revenue'] ?? 0),
+        ];
+    }
     
     public function getDailySalesSummary($days = 7)
     {

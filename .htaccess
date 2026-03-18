@@ -8,23 +8,23 @@ Options +FollowSymLinks
 RewriteEngine On
 
 # Rewrite base
-RewriteBase /
+RewriteBase /racazastore/
 
-# Hide /public in URL: redirect /public/... to /...
-RewriteCond %{THE_REQUEST} \s/public/([^\s?]*) [NC]
-RewriteRule ^public/(.*)$ /$1 [R=301,L]
+# Hide /public in URL: redirect /racazastore/public/... to /racazastore/...
+RewriteCond %{THE_REQUEST} \s/racazastore/public/([^\s?]*) [NC]
+RewriteRule ^public/(.*)$ $1 [R=301,L]
 
 # If requesting the project root, send to the public folder
-RewriteRule ^$ public/ [L,R=302]
+RewriteRule ^$ public/ [L]
 
 # Serve files/directories that exist under /public
-RewriteCond %{REQUEST_URI} !^/public/ [NC]
-RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
-RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
+RewriteCond %{REQUEST_URI} !^/racazastore/public/ [NC]
+RewriteCond %{DOCUMENT_ROOT}/racazastore/public/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/racazastore/public/$1 -d
 RewriteRule ^(.*)$ public/$1 [L]
 
 # Forward everything else to CodeIgniter front controller in /public
-RewriteCond %{REQUEST_URI} !^/public/ [NC]
+RewriteCond %{REQUEST_URI} !^/racazastore/public/ [NC]
 RewriteRule ^(.*)$ public/index.php/$1 [L]
 
 # Security headers

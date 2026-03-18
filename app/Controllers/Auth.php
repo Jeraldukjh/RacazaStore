@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AdminModel;
+use App\Models\StaffModel;
 
 class Auth extends BaseController
 {
@@ -29,9 +30,20 @@ class Auth extends BaseController
                 'username' => $admin['username']
             ]);
             return redirect()->to('/dashboard')->with('success', 'Login successful!');
-        } else {
-            return redirect()->to('/login')->with('error', 'Invalid username or password');
         }
+
+        $staffModel = new StaffModel();
+        $staff = $staffModel->getStaff((string) $username);
+
+        if ($staff && password_verify((string) $password, $staff['password'])) {
+            session()->set([
+                'staff_id' => $staff['id'],
+                'staff_username' => $staff['username'],
+            ]);
+            return redirect()->to('/staff/dashboard')->with('success', 'Login successful!');
+        }
+
+        return redirect()->to('/login')->with('error', 'Invalid username or password');
     }
     
     public function logout()

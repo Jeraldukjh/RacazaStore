@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Point of Sale - Racaza Store</title>
+    <title>Cashier POS - Racaza Store</title>
     <style>
         * {
             margin: 0;
@@ -66,15 +66,7 @@
             grid-template-columns: 1fr 350px;
             gap: 20px;
         }
-        .main-panel {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.32);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
+        .main-panel,
         .side-panel {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.14);
@@ -87,7 +79,7 @@
         .search-bar {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .search-bar input {
             flex: 1;
@@ -105,7 +97,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 12px;
-            max-height: 500px;
+            max-height: 520px;
             overflow-y: auto;
         }
         .product-card {
@@ -121,35 +113,40 @@
             transform: translateY(-2px);
         }
         .product-name {
-            font-weight: 600;
+            font-weight: 800;
             margin-bottom: 4px;
         }
         .product-price {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #e74c3c;
             margin-bottom: 4px;
+            font-weight: 900;
         }
         .product-quantity {
             font-size: 0.9rem;
             color: rgba(255,255,255,0.82);
         }
         .cart {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
             padding: 10px;
             background: rgba(255,255,255,0.06);
-            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 12px;
             margin-bottom: 8px;
         }
         .cart-item-name {
             flex: 1;
+            font-weight: 800;
         }
         .cart-item-price {
             margin-right: 10px;
+            white-space: nowrap;
         }
         .cart-item-quantity {
             display: flex;
@@ -157,25 +154,27 @@
             gap: 8px;
         }
         .quantity-btn {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border: 1px solid rgba(255,255,255,0.18);
             background: rgba(255,255,255,0.10);
             color: rgba(255,255,255,0.95);
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 900;
         }
         .quantity-btn:hover {
             background: rgba(255,255,255,0.20);
         }
         .total-section {
-            padding: 15px;
+            padding: 14px;
             background: rgba(255,255,255,0.06);
-            border-radius: 12px;
-            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 16px;
+            margin-bottom: 14px;
         }
         .total-row {
             display: flex;
@@ -186,16 +185,17 @@
             color: rgba(255,255,255,0.82);
         }
         .total-amount {
-            font-weight: 700;
+            font-weight: 900;
             font-size: 1.2rem;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: rgba(255,255,255,0.88);
+            font-weight: 700;
         }
         .form-group input {
             width: 100%;
@@ -213,28 +213,26 @@
         .btn {
             width: 100%;
             padding: 12px;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.16);
             border-radius: 12px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 800;
+            font-weight: 900;
             transition: all 0.2s ease;
+            background: rgba(255,255,255,0.10);
+            color: rgba(255,255,255,0.92);
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.16);
+            transform: translateY(-1px);
         }
         .btn-primary {
             background: #e74c3c;
             color: white;
+            border-color: rgba(231, 76, 60, 0.25);
         }
         .btn-primary:hover {
             background: #d84335;
-            transform: translateY(-1px);
-        }
-        .btn-secondary {
-            background: rgba(255,255,255,0.10);
-            color: rgba(255,255,255,0.92);
-            border: 1px solid rgba(255,255,255,0.16);
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.16);
         }
         .alert {
             padding: 10px 12px;
@@ -252,6 +250,20 @@
             border-color: rgba(239, 68, 68, 0.35);
             background: rgba(239, 68, 68, 0.12);
         }
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 560px) {
+            .nav-links {
+                gap: 10px;
+            }
+            .nav-links a {
+                padding: 8px 10px;
+            }
+        }
+
         .modal {
             position: fixed;
             inset: 0;
@@ -343,36 +355,18 @@
             cursor: not-allowed;
             transform: none;
         }
-        @media (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .side-panel {
-                order: -1;
-            }
-        }
-        @media (max-width: 560px) {
-            .nav-links {
-                gap: 10px;
-            }
-            .nav-links a {
-                padding: 8px 10px;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Racaza Store POS</h1>
+        <h1>Cashier POS</h1>
         <div class="nav-links">
-            <a href="<?= site_url('dashboard') ?>">Dashboard</a>
-            <a href="<?= site_url('products') ?>">Products</a>
-            <a href="<?= site_url('pos') ?>">POS</a>
-            <a href="<?= site_url('pos/sales') ?>">Sales</a>
+            <a href="<?= site_url('staff/dashboard') ?>">Dashboard</a>
+            <a href="<?= site_url('staff/pos') ?>">POS</a>
             <a href="<?= site_url('auth/logout') ?>">Logout</a>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="main-panel">
             <?php if (session()->getFlashdata('success')): ?>
@@ -380,17 +374,17 @@
                     <?= session()->getFlashdata('success') ?>
                 </div>
             <?php endif; ?>
-            
+
             <?php if (session()->getFlashdata('error')): ?>
                 <div class="alert alert-error">
                     <?= session()->getFlashdata('error') ?>
                 </div>
             <?php endif; ?>
-            
+
             <div class="search-bar">
                 <input type="text" id="productSearch" placeholder="Search products...">
             </div>
-            
+
             <div class="products-grid" id="productsGrid">
                 <?php foreach ($products as $product): ?>
                     <div class="product-card" onclick="addToCart(<?= $product['id'] ?>, '<?= esc($product['product_name']) ?>', <?= $product['price'] ?>, <?= $product['quantity'] ?>)">
@@ -401,14 +395,14 @@
                 <?php endforeach; ?>
             </div>
         </div>
-        
+
         <div class="side-panel">
-            <h2 style="margin-bottom: 15px;">Cart</h2>
-            
+            <h2 style="margin-bottom: 12px;">Cart</h2>
+
             <div class="cart" id="cart">
                 <div id="cartItems"></div>
             </div>
-            
+
             <div class="total-section">
                 <div class="total-row">
                     <span class="total-label">Subtotal:</span>
@@ -419,10 +413,11 @@
                     <span class="total-amount" id="total">₱0.00</span>
                 </div>
             </div>
-            
-            <form id="saleForm" method="post" action="<?= site_url('pos/processSale') ?>">
+
+            <form id="saleForm" method="post" action="<?= site_url('staff/pos/processSale') ?>">
                 <?= csrf_field() ?>
                 <input type="hidden" name="pos_token" value="<?= esc($pos_token ?? '') ?>">
+
                 <div class="form-group">
                     <label for="customer_name">Customer Name:</label>
                     <input type="text" id="customer_name" name="customer_name" placeholder="Optional">
@@ -435,8 +430,9 @@
                     <label for="change">Change:</label>
                     <input type="number" id="change" name="change" step="0.01" min="0" placeholder="0.00" readonly>
                 </div>
+
                 <button id="previewReceiptBtn" type="button" class="btn btn-primary" onclick="openReceiptModal();">Preview Receipt</button>
-                <button type="button" class="btn btn-secondary" onclick="clearCart()" style="margin-top: 10px;">Clear Cart</button>
+                <button type="button" class="btn" onclick="clearCart()" style="margin-top: 10px;">Start New Transaction</button>
             </form>
         </div>
     </div>
@@ -450,19 +446,19 @@
             <div class="modal-body">
                 <div class="receipt" id="receiptContent"></div>
                 <div class="modal-actions">
-                    <button type="button" class="btn btn-secondary" id="printReceiptBtn">Print</button>
+                    <button type="button" class="btn" id="printReceiptBtn">Print</button>
                     <button type="submit" form="saleForm" class="btn btn-primary" id="confirmSaleBtn">Confirm & Complete</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script>
         let cart = [];
-        
+
         function addToCart(id, name, price, stock) {
             const existingItem = cart.find(item => item.id === id);
-            
+
             if (existingItem) {
                 if (existingItem.quantity < stock) {
                     existingItem.quantity++;
@@ -479,42 +475,41 @@
                     stock: stock
                 });
             }
-            
+
             updateCart();
         }
-        
+
         function updateCart() {
             const cartItems = document.getElementById('cartItems');
             const subtotalEl = document.getElementById('subtotal');
             const totalEl = document.getElementById('total');
-            
+
             cartItems.innerHTML = '';
             let subtotal = 0;
-            
+
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
-                
+
                 cartItems.innerHTML += `
                     <div class="cart-item">
                         <div class="cart-item-name">${item.name}</div>
                         <div class="cart-item-price">₱${item.price.toFixed(2)}</div>
                         <div class="cart-item-quantity">
-                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <button class="quantity-btn" type="button" onclick="updateQuantity(${item.id}, -1)">-</button>
                             <span>${item.quantity}</span>
-                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            <button class="quantity-btn" type="button" onclick="updateQuantity(${item.id}, 1)">+</button>
                         </div>
                     </div>
                 `;
             });
-            
+
             subtotalEl.textContent = `₱${subtotal.toFixed(2)}`;
             totalEl.textContent = `₱${subtotal.toFixed(2)}`;
-            
-            // Update hidden form fields
+
             updateHiddenFields();
         }
-        
+
         function updateQuantity(id, change) {
             const item = cart.find(item => item.id === id);
             if (item) {
@@ -530,28 +525,26 @@
                 }
             }
         }
-        
+
         function updateHiddenFields() {
             const form = document.getElementById('saleForm');
-            
-            // Remove existing hidden fields
+
             const existingFields = form.querySelectorAll('input[name^="items"]');
             existingFields.forEach(field => field.remove());
-            
-            // Add hidden fields for cart items
+
             cart.forEach((item, index) => {
                 const hiddenId = document.createElement('input');
                 hiddenId.type = 'hidden';
                 hiddenId.name = `items[${index}][product_id]`;
                 hiddenId.value = item.id;
                 form.appendChild(hiddenId);
-                
+
                 const hiddenQty = document.createElement('input');
                 hiddenQty.type = 'hidden';
                 hiddenQty.name = `items[${index}][quantity]`;
                 hiddenQty.value = item.quantity;
                 form.appendChild(hiddenQty);
-                
+
                 const hiddenPrice = document.createElement('input');
                 hiddenPrice.type = 'hidden';
                 hiddenPrice.name = `items[${index}][unit_price]`;
@@ -559,7 +552,7 @@
                 form.appendChild(hiddenPrice);
             });
         }
-        
+
         function clearCart() {
             cart = [];
             updateCart();
@@ -666,12 +659,10 @@
             win.close();
         }
 
-        // Make available for inline onclick handlers
         window.openReceiptModal = openReceiptModal;
         window.closeReceiptModal = closeReceiptModal;
         window.printReceipt = printReceipt;
-        
-        // Calculate change when cash received changes
+
         var cashInput = document.getElementById('cash_received');
         if (cashInput) {
             cashInput.addEventListener('input', function() {
@@ -683,7 +674,6 @@
             });
         }
 
-        // Receipt preview
         var previewBtn = document.getElementById('previewReceiptBtn');
         if (previewBtn) {
             previewBtn.addEventListener('click', function () {
@@ -701,35 +691,33 @@
                 openReceiptModal();
             });
         }
+
         var closeBtn = document.getElementById('closeReceiptModal');
         if (closeBtn) closeBtn.addEventListener('click', closeReceiptModal);
+
         var modal = document.getElementById('receiptModal');
         if (modal) {
             modal.addEventListener('click', function (e) {
                 if (e.target && e.target.id === 'receiptModal') closeReceiptModal();
             });
         }
+
         var printBtn = document.getElementById('printReceiptBtn');
         if (printBtn) printBtn.addEventListener('click', printReceipt);
-        
-        // Search functionality
+
         var searchEl = document.getElementById('productSearch');
         if (searchEl) {
             searchEl.addEventListener('input', function() {
                 const query = this.value.toLowerCase();
                 const cards = document.querySelectorAll('.product-card');
-                
+
                 cards.forEach(card => {
                     const text = card.textContent.toLowerCase();
                     card.style.display = text.includes(query) ? '' : 'none';
                 });
             });
         }
-        
-        // Initialize
-        updateCart();
 
-        // Prevent double-submit
         var saleForm = document.getElementById('saleForm');
         if (saleForm) {
             saleForm.addEventListener('submit', function () {
@@ -741,6 +729,8 @@
                 }
             });
         }
+
+        updateCart();
     </script>
 </body>
 </html>

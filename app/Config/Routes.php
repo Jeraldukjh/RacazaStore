@@ -12,6 +12,8 @@ $routes->get('/auth/logout', 'Auth::logout');
 
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/staff/dashboard', 'Staff::dashboard');
+$routes->get('/staff/pos', 'StaffPos::index');
+$routes->post('/staff/pos/processSale', 'StaffPos::processSale');
 
 $routes->get('/pos', 'Pos::index');
 $routes->post('/pos/processSale', 'Pos::processSale');
