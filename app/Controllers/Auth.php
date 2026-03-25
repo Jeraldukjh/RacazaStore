@@ -23,7 +23,11 @@ class Auth extends BaseController
         
         $adminModel = new AdminModel();
         $admin = $adminModel->getAdmin($username);
-        
+
+        if ($admin && ((int) ($admin['is_active'] ?? 1)) !== 1) {
+            return redirect()->to('/login')->with('error', 'Account is deactivated. Please contact admin.');
+        }
+
         if ($admin && password_verify($password, $admin['password'])) {
             session()->set([
                 'admin_id' => $admin['id'],
@@ -34,6 +38,10 @@ class Auth extends BaseController
 
         $staffModel = new StaffModel();
         $staff = $staffModel->getStaff((string) $username);
+
+        if ($staff && ((int) ($staff['is_active'] ?? 1)) !== 1) {
+            return redirect()->to('/login')->with('error', 'Account is deactivated. Please contact admin.');
+        }
 
         if ($staff && password_verify((string) $password, $staff['password'])) {
             session()->set([

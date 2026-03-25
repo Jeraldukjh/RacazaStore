@@ -56,6 +56,22 @@ class SaleModel extends Model
             'total_revenue' => (float) ($row['total_revenue'] ?? 0),
         ];
     }
+
+    public function getOverallSalesSummary(): array
+    {
+        $row = $this->select('COUNT(*) as total_sales, COALESCE(SUM(total_price), 0) as total_revenue')
+            ->first();
+
+        return [
+            'total_sales' => (int) ($row['total_sales'] ?? 0),
+            'total_revenue' => (float) ($row['total_revenue'] ?? 0),
+        ];
+    }
+
+    public function getTodaySalesSummary(): array
+    {
+        return $this->getSalesSummaryByDate(date('Y-m-d'));
+    }
     
     public function getDailySalesSummary($days = 7)
     {

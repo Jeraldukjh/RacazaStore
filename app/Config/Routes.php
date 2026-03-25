@@ -11,6 +11,11 @@ $routes->post('/auth/authenticate', 'Auth::authenticate');
 $routes->get('/auth/logout', 'Auth::logout');
 
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/users', 'Users::index');
+$routes->post('/users/create', 'Users::create');
+$routes->get('/users/edit/(:alpha)/(:num)', 'Users::edit/$1/$2');
+$routes->post('/users/update/(:alpha)/(:num)', 'Users::update/$1/$2');
+$routes->post('/users/toggle/(:alpha)/(:num)', 'Users::toggle/$1/$2');
 $routes->get('/staff/dashboard', 'Staff::dashboard');
 $routes->get('/staff/pos', 'StaffPos::index');
 $routes->post('/staff/pos/processSale', 'StaffPos::processSale');

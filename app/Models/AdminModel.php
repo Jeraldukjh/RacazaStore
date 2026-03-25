@@ -8,7 +8,7 @@ class AdminModel extends Model
 {
     protected $table = 'admins';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['username', 'password'];
+    protected $allowedFields = ['username', 'password', 'is_active'];
     protected $returnType = 'array';
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
@@ -17,5 +17,10 @@ class AdminModel extends Model
     public function getAdmin($username)
     {
         return $this->where('username', $username)->first();
+    }
+
+    public function getAllAdmins()
+    {
+        return $this->orderBy('id', 'ASC')->findAll();
     }
 }

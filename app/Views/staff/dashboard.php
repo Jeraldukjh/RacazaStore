@@ -153,6 +153,17 @@
             <h2>Welcome, <?= esc($username) ?>!</h2>
             <p>This is your staff dashboard. Manage your daily tasks here.</p>
         </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number"><?= (int) (($overallSummary['total_sales'] ?? 0)) ?></div>
+                <div class="stat-label">Overall Sales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><?= (int) (($todaySummary['total_sales'] ?? 0)) ?></div>
+                <div class="stat-label">Today Sales</div>
+            </div>
+        </div>
         </div>
     </div>
 </body>

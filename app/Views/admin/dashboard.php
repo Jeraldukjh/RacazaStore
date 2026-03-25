@@ -122,6 +122,32 @@
             background: rgba(34, 197, 94, 0.12);
             color: rgba(255,255,255,0.92);
         }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            padding: 18px;
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.32);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: left;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #e74c3c;
+            letter-spacing: 0.2px;
+        }
+        .stat-label {
+            color: rgba(255,255,255,0.82);
+            margin-top: 6px;
+        }
         @media (max-width: 560px) {
             .nav-links {
                 gap: 10px;
@@ -140,6 +166,7 @@
             <a href="<?= site_url('products') ?>">Products</a>
             <a href="<?= site_url('pos') ?>">POS</a>
             <a href="<?= site_url('pos/sales') ?>">Sales</a>
+            <a href="<?= site_url('users') ?>">Users</a>
             <a href="<?= site_url('auth/logout') ?>">Logout</a>
         </div>
     </div>
@@ -157,6 +184,25 @@
             <div class="btn-row">
                 <a href="<?= site_url('products') ?>" class="btn">Manage Products</a>
                 <a href="<?= site_url('products/create') ?>" class="btn btn-secondary">Add New Product</a>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">₱<?= number_format((float) (($overallSummary['total_revenue'] ?? 0)), 2) ?></div>
+                <div class="stat-label">Overall Revenue</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><?= (int) (($overallSummary['total_sales'] ?? 0)) ?></div>
+                <div class="stat-label">Overall Sales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">₱<?= number_format((float) (($todaySummary['total_revenue'] ?? 0)), 2) ?></div>
+                <div class="stat-label">Today Revenue</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><?= (int) (($todaySummary['total_sales'] ?? 0)) ?></div>
+                <div class="stat-label">Today Sales</div>
             </div>
         </div>
     </div>
